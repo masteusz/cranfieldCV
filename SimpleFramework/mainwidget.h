@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include <QtGui>
-#include <opencvgl.h>
 #include <frameshow.h>
 
 class MainWidget : public QWidget
@@ -18,12 +17,15 @@ private:
     QPushButton *bExit;
     QLabel *image;
     QLabel *preferences;
+    QLabel *countLabel;
+    QLabel *framesLabel;
     QVBoxLayout *layout;
     QHBoxLayout *imageLayout;
     QHBoxLayout *controlsLayout;
+    QGridLayout *preferencesLayout;
 
     FrameShow *frameShow;
-    OpenCVGL *cvGLWidget;
+    int count;
 
     void initializeElements();
     void setupLayout();

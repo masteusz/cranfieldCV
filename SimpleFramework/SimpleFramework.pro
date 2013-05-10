@@ -16,9 +16,9 @@ PKGCONFIG += opencv
 
 SOURCES += main.cpp\
         mainwidget.cpp \
-    opencvgl.cpp \
-    frameshow.cpp
+    frameshow.cpp \
+    utils.cpp
 
 HEADERS  += mainwidget.h \
-    opencvgl.h \
-    frameshow.h
+    frameshow.h \
+    utils.h

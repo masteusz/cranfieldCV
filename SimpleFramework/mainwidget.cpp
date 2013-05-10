@@ -12,20 +12,25 @@ void MainWidget::initializeElements()
 {
     bExit = new QPushButton("Quit");
     image = new QLabel("image!");
+    framesLabel = new QLabel("Frames:");
+    countLabel = new QLabel();
     preferences = new QLabel("Preferences be here!");
     layout = new QVBoxLayout();
     imageLayout = new QHBoxLayout();
     controlsLayout = new QHBoxLayout();
-    cvGLWidget = new OpenCVGL();
-    cvGLWidget->setFixedSize(640,480);
+    preferencesLayout = new QGridLayout();
     frameShow = new FrameShow();
+    count = 0;
 }
 
 void MainWidget::setupLayout()
 {
+    preferencesLayout->addWidget(framesLabel,0,0);
+    preferencesLayout->addWidget(countLabel,0,1);
+
     controlsLayout->addWidget(bExit);
-    imageLayout->addWidget(cvGLWidget);
-    imageLayout->addWidget(preferences);
+    imageLayout->addWidget(image);
+    imageLayout->addLayout(preferencesLayout);
     layout->addLayout(imageLayout);
     layout->addLayout(controlsLayout);
     this->setLayout(layout);
@@ -45,8 +50,9 @@ void MainWidget::on_bExit_clicked()
 
 void MainWidget::gotNewImage()
 {
-    qDebug("Got new image!");
-    //cvGLWidget->renderImage(frameShow->out);
+    countLabel->setText(QString::number(count));
+    image->setPixmap(QPixmap::fromImage(frameShow->out));
+    count++;
 }
 
 MainWidget::~MainWidget()

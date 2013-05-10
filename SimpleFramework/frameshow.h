@@ -4,6 +4,8 @@
 #include <QThread>
 #include <opencv2/opencv.hpp>
 #include <QImage>
+#include <utils.h>
+
 
 class FrameShow : public QThread
 {
@@ -11,14 +13,11 @@ class FrameShow : public QThread
 public:
     explicit FrameShow(QObject *parent = 0);
     QImage out;
-    QImage outThresh;
-    QImage outGray;
 
 private:
     cv::Mat img;
-    cv::Mat thresh;
-    cv::Mat gray;
     cv::VideoCapture cap;
+    double rate;
 protected:
     void run();
     
