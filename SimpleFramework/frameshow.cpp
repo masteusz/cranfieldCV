@@ -11,8 +11,6 @@ FrameShow::FrameShow(QObject *parent) :
 void FrameShow::run()
 {
     cap.open("/home/mati/Projects/videos/bbb.avi");
-    //cap.set(CV_CAP_PROP_FRAME_WIDTH,800);
-    //cap.set(CV_CAP_PROP_FRAME_HEIGHT,600);
     rate = cap.get(CV_CAP_PROP_FPS);
     int d = 1000/rate;
     for(;;)
@@ -22,4 +20,9 @@ void FrameShow::run()
         Utils::delay(d);
         emit newImage();
     }
+}
+
+QImage FrameShow::getCapturedImage()
+{
+    return out;
 }

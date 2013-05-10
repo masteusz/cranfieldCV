@@ -51,7 +51,7 @@ void MainWidget::on_bExit_clicked()
 void MainWidget::gotNewImage()
 {
     countLabel->setText(QString::number(count));
-    image->setPixmap(QPixmap::fromImage(frameShow->out));
+    image->setPixmap(QPixmap::fromImage(frameShow->getCapturedImage()));
     count++;
 }
 

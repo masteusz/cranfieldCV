@@ -10,14 +10,17 @@
 class FrameShow : public QThread
 {
     Q_OBJECT
+
 public:
     explicit FrameShow(QObject *parent = 0);
-    QImage out;
+    QImage getCapturedImage();
 
 private:
     cv::Mat img;
     cv::VideoCapture cap;
     double rate;
+    QImage out;
+
 protected:
     void run();
     
