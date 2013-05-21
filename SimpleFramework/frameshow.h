@@ -20,6 +20,7 @@ private:
     cv::VideoCapture cap;
     double rate;
     QImage out;
+    bool isThreadStopped;
 
 protected:
     void run();
@@ -28,6 +29,8 @@ signals:
     void newImage();
     
 public slots:
+    void stopThread();
+    void startThread();
     
 };
 

@@ -11,6 +11,8 @@ MainWidget::MainWidget(QWidget *parent)
 void MainWidget::initializeElements()
 {
     bExit = new QPushButton("Quit");
+    bStartVideo = new QPushButton("Start");
+    bStopVideo = new QPushButton("Stop");
     image = new QLabel("image!");
     framesLabel = new QLabel("Frames:");
     countLabel = new QLabel();
@@ -27,6 +29,8 @@ void MainWidget::setupLayout()
 {
     preferencesLayout->addWidget(framesLabel,0,0);
     preferencesLayout->addWidget(countLabel,0,1);
+    preferencesLayout->addWidget(bStartVideo,1,0);
+    preferencesLayout->addWidget(bStopVideo,1,1);
 
     controlsLayout->addWidget(bExit);
     imageLayout->addWidget(image);
@@ -40,6 +44,8 @@ void MainWidget::setSignals()
 {
     connect(bExit,SIGNAL(clicked()),this,SLOT(on_bExit_clicked()));
     connect(frameShow,SIGNAL(newImage()),this,SLOT(gotNewImage()));
+    connect(bStartVideo,SIGNAL(clicked()),frameShow,SLOT(startThread()));
+    connect(bStopVideo,SIGNAL(clicked()),frameShow,SLOT(stopThread()));
 }
 
 void MainWidget::on_bExit_clicked()

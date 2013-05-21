@@ -15,6 +15,8 @@ public:
 
 private:
     QPushButton *bExit;
+    QPushButton *bStartVideo;
+    QPushButton *bStopVideo;
     QLabel *image;
     QLabel *preferences;
     QLabel *countLabel;
